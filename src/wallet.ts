@@ -3,8 +3,6 @@ import { Address, Hash, Script, HexString } from '@ckb-lumos/base';
 import { secp256k1Blake160 } from '@ckb-lumos/common-scripts';
 import { hd, helpers, RPC } from '@ckb-lumos/lumos';
 import { getSporeConfig } from '@spore-sdk/core';
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
 
 export interface Wallet {
   lock: Script;
@@ -93,13 +91,4 @@ export function createDefaultLockWallet(privateKey: HexString): Wallet {
     signTransaction,
     signAndSendTransaction,
   };
-}
-
-/**
- * Fetch an image file from local and return an ArrayBuffer.
- * This function is only available in the Node environment.
- */
-export async function fetchLocalFile(src: string) {
-  const buffer = readFileSync(resolve(__dirname, src));
-  return new Uint8Array(buffer).buffer;
 }
