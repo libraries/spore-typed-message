@@ -1,8 +1,7 @@
-import { defaultEmptyWitnessArgs, updateWitnessArgs, isScriptValueEquals } from '@spore-sdk/core';
-import { Address, Hash, Script, HexString } from '@ckb-lumos/base';
+import { Address, Hash, HexString, Script } from '@ckb-lumos/base';
 import { secp256k1Blake160 } from '@ckb-lumos/common-scripts';
-import { hd, helpers, RPC } from '@ckb-lumos/lumos';
-import { getSporeConfig } from '@spore-sdk/core';
+import { RPC, hd, helpers } from '@ckb-lumos/lumos';
+import { defaultEmptyWitnessArgs, getSporeConfig, isScriptValueEquals, updateWitnessArgs } from '@spore-sdk/core';
 
 export interface Wallet {
   lock: Script;
@@ -92,3 +91,8 @@ export function createDefaultLockWallet(privateKey: HexString): Wallet {
     signAndSendTransaction,
   };
 }
+
+export const accounts = {
+  alice: createDefaultLockWallet('0x49aa6d595ac46cc8e1a31b511754dd58f241a7d8a6ad29e83d6b0c1a82399f3d'),
+  bob: createDefaultLockWallet('0xc153ee57dc8ae3dac3495c828d6f8c3fef6b1d0c74fc31101c064137b3269d6d'),
+};

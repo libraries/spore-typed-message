@@ -1,18 +1,21 @@
 import { createCluster } from '@spore-sdk/core';
-import { createDefaultLockWallet } from './wallet';
+import { accounts } from './wallet';
 
 export async function main() {
-    const wallet = createDefaultLockWallet('0xd5d8fe30c6ab6bfd2c6e0a940299a1e01a9ab6b8a8ed407a00b130e6a51435fc');
-    let { txSkeleton } = await createCluster({
+    let { txSkeleton, outputIndex } = await createCluster({
         data: {
             name: 'ohayou',
             description: '',
         },
-        toLock: wallet.lock,
-        fromInfos: [wallet.address],
+        toLock: accounts.alice.lock,
+        fromInfos: [accounts.alice.address],
     });
-    const hash = await wallet.signAndSendTransaction(txSkeleton)
+    const hash = await accounts.alice.signAndSendTransaction(txSkeleton)
     console.log(`Cluster created at: https://pudge.explorer.nervos.org/transaction/${hash}`);
+    let clusterID = txSkeleton.get('outputs').get(outputIndex)!.cellOutput.type!.args;
+    // Cluster ID: 0x66d97508a7e81acd10e6845eec90d564df35dc0bfd2338796b9677f3738a3614
+    console.log(`Cluster ID: ${clusterID}`);
+    console.log(`Cluster: https://a-simple-demo.spore.pro/cluster/${clusterID}`);
 }
 
 main()
