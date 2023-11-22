@@ -1,5 +1,5 @@
 import { transferSpore } from '@spore-sdk/core';
-import { accounts } from './wallet';
+import { accounts } from './rawWallet';
 
 async function main() {
     let { txSkeleton } = await transferSpore({

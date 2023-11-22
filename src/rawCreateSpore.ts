@@ -1,7 +1,7 @@
 import { createSpore } from '@spore-sdk/core';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { accounts } from './wallet';
+import { accounts } from './rawWallet';
 
 export async function fetchLocalFile(src: string) {
     const buffer = readFileSync(resolve(__dirname, src));
@@ -9,13 +9,10 @@ export async function fetchLocalFile(src: string) {
 }
 
 export async function main() {
-    let { txSkeleton, outputIndex } = await createSpore({
+    const { txSkeleton, outputIndex } = await createSpore({
         data: {
             contentType: 'image/jpeg',
             content: await fetchLocalFile('../res/nervos.jpg'),
-            contentTypeParameters: {
-                immortal: true,
-            },
         },
         toLock: accounts.alice.lock,
         fromInfos: [accounts.alice.address],

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
-    "index": "ts-node src/index.ts",
-    "indexCreateImmortalSpore": "ts-node src/indexCreateImmortalSpore.ts",
-    "indexCreatePrivateCluster": "ts-node src/indexCreatePrivateCluster.ts",
-    "indexCreateSpore": "ts-node src/indexCreateSpore.ts",
-    "indexCreateSporeWithCluster": "ts-node src/indexCreateSporeWithCluster.ts",
-    "indexTransferSpore": "ts-node src/indexTransferSpore.ts"
+    "rawCreateImmortalSpore": "ts-node src/rawCreateImmortalSpore.ts",
+    "rawCreatePrivateCluster": "ts-node src/rawCreatePrivateCluster.ts",
+    "rawCreateSpore": "ts-node src/rawCreateSpore.ts",
+    "rawCreateSporeWithCluster": "ts-node src/rawCreateSporeWithCluster.ts",
+    "rawTransferSpore": "ts-node src/rawTransferSpore.ts",
+    "tmCreateSpore": "ts-node src/tmCreateSpore.ts",
+    "tmTransferSpore": "ts-node src/tmTransferSpore.ts"
   },
   "dependencies": {
     "@ckb-lumos/lumos": "^0.21.0-next.0",
